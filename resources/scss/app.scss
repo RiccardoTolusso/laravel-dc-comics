@@ -4,3 +4,14 @@
 body {
     background-color: white;
 }
+
+
+.hoverable-description{
+    opacity: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.427), black);
+    transition: opacity 0.5s;
+
+    &:hover{
+        opacity: 1;
+    }
+}

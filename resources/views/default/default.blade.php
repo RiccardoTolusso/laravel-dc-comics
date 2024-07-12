@@ -10,7 +10,14 @@
 </head>
 
 <body>
-
+    <header>
+        @include('partials.navbar')
+    </header>
+    <main>
+        <div class="container">
+            @yield('main')
+        </div>
+    </main>
 </body>
 
 </html>
