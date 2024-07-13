@@ -13,7 +13,7 @@
     <header>
         @include('partials.navbar')
     </header>
-    <main>
+    <main class="bg-dark">
         <div class="container">
             @yield('main')
         </div>

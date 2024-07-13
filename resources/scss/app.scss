@@ -6,10 +6,19 @@ body {
 }
 
 
+nav{
+    img{
+        max-height: 50px;
+        box-shadow: 0px 0px 5px white;
+    }
+}
+
 .hoverable-description{
     opacity: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.427), black);
     transition: opacity 0.5s;
+    text-decoration: none;
+    cursor: pointer;
 
     &:hover{
         opacity: 1;
