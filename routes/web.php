@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect("/comics");
+});
 
-Route::resource("/", ComicsController::class);
+Route::resource("comics", ComicsController::class);
