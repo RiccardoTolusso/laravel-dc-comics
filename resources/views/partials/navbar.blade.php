@@ -1,7 +1,7 @@
 <nav>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img class="bg-light rounded-circle" src="https://www.dc.com/img/dc-logo.svg" alt="Comics">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -14,7 +14,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="/comics/create">Create New</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

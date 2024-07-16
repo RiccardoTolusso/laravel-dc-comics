@@ -23,7 +23,7 @@ class ComicsController extends Controller
      */
     public function create()
     {
-        //  
+        return view("comics.create");
     }
 
     /**
@@ -31,7 +31,36 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        foreach ($data as $element) {
+            if ($element == null) {
+                abort(500);
+            }
+        }
+
+
+        $comic = new Comic();
+        $comic->fill($data);
+
+        // CHECK IF IMAGE EXISTS
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $data['thumb']);
+        // don't download content
+        curl_setopt($ch, CURLOPT_NOBODY, 1);
+        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+        if ($result !== FALSE) {
+            $comic->thumb = $data['thumb'];
+        } else {
+            $comic->thumb = "https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-thumbnail-graphic-illustration-vector-png-image_40966590.jpg";
+        }
+
+        $comic->save();
+
+        return redirect(route("comics.show", ["comic" => $comic->id]));
     }
 
     /**
@@ -45,9 +74,9 @@ class ComicsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view("comics.create", compact("comic"));
     }
 
     /**
