@@ -76,22 +76,32 @@ class ComicsController extends Controller
      */
     public function edit(Comic $comic)
     {
+        $comic->price = str_replace("$", "", $comic->price);
+        $comic->price = floatval($comic->price);
         return view("comics.create", compact("comic"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        if ($comic != null) {
+            $comic->update($request->all());
+        }
+        return redirect(route("comics.show", ['comic' => $comic->id]));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        if ($comic == null) {
+            abort(404);
+        } else {
+            $comic->delete();
+            return redirect()->route("comics.index");
+        }
     }
 }

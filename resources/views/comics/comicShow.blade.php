@@ -21,8 +21,12 @@
                     <h5 class="card-text text-end px-5 py-4 position-absolute bottom-0 w-100 text-primary">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <button class="btn btn-primary">Modifica</button>
-                                <button class="btn btn-danger">Elimina</button>
+                                <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary">Modifica</a>
+                                <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button href="" class="btn btn-danger">Elimina</button>
+                                </form>
                             </div>
                             <div>
                                 {{ $comic->price }}
